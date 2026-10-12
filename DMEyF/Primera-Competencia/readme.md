@@ -18,10 +18,9 @@ La entrega final es un **blend de dos experimentos** (j4955 y j4957) con un cort
 │   ├── j4957_competencia.ipynb      # experimento HT4957-01 (bayesiana propia, bynode = 0.2, 12 semillas)
 │   └── blend_j4955_j4957.ipynb      # blend de los dos y archivos de envío
 ├── bayesianas/
-│   ├── HT4953-01_BO_log.txt         # log completo de la bayesiana del j4953
-│   └── HT4957-01_BO_log.txt         # log completo de la bayesiana del j4957
-└── entregas/
-    └── Intentoj_blend_12000.csv     # entrega final
+    ├── HT4953-01_BO_log.txt         # log completo de la bayesiana del j4953
+    └── HT4957-01_BO_log.txt         # log completo de la bayesiana del j4957
+
 ```
 
 Los datasets, los modelos `.txt` de LightGBM y las predicciones intermedias no se suben (ver `.gitignore`).
