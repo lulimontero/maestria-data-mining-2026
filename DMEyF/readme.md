@@ -104,11 +104,11 @@ El j4957 gana en el backtest, pero **ese resultado está sesgado a su favor**: s
 |---|---|---|---|
 | 10.500 | | | 106,34 |
 | 11.000 | 109,84 | 102,25 | 107,17 |
-| 11.400 | 109,45 | | |
+| 11.400 | 109,45 | 103,04 | |
 | 11.500 | | | 109,15 |
-| 11.600 | 108,16 | | |
-| 11.800 | 107,00 | | |
-| 12.000 | 106,70 | | **107,77** |
+| 11.600 | 108,16 | 102,60 | |
+| 11.800 | 107,00 | 102,19 | |
+| 12.000 | 106,70 | 104,20 | **107,77** |
 | 12.500 | | | 105,79 |
 | 13.000 | | | 104,45 |
 | 13.500 | | | 102,19 |
@@ -116,7 +116,7 @@ El j4957 gana en el backtest, pero **ese resultado está sesgado a su favor**: s
 | 14.200 | | 99,63 | |
 | 14.500 | | | 101,92 |
 
-Con los mismos cortes, el blend y el j4955 empatan: cada uno gana en algunos y pierde en otros, siempre por 1 a 3 M, lo que equivale a 1–3 `BAJA+2`. El public tiene un ruido de alrededor de ±10 M (son ~49 mil clientes y unos 220 `BAJA+2` entre los enviados), así que diferencias de ese tamaño no son concluyentes.
+En el public, el j4957 queda por debajo del j4955 en todos los cortes comparables (3 a 8 M), aunque la diferencia se achica hacia 12.000. El blend queda entre los dos modelos con 11.000 envíos, empata con el j4955 alrededor de 11.500 y **con 12.000 supera a ambos** (107,77 contra 106,70 y 104,20). Todas estas diferencias son de 1 a 8 M, o sea 1–7 `BAJA+2`. El public tiene un ruido de alrededor de ±10 M (son ~49 mil clientes y unos 220 `BAJA+2` entre los enviados), así que diferencias de ese tamaño no son concluyentes.
 
 ## 6. Blend
 
@@ -143,13 +143,14 @@ Se promedian **puestos y no probabilidades** para que los dos modelos pesen exac
 
 ### 6.2 Por qué un blend
 
-- En el public, el j4955 y el j4957 empatan dentro del ruido. En el backtest gana el j4957, pero con el sesgo explicado arriba. No hay un ganador claro.
+- En el public gana el j4955 y en el backtest gana el j4957 (este último con el sesgo explicado arriba). Las dos señales apuntan para lados opuestos y son del tamaño del ruido. No hay un ganador claro.
 - Cada modelo se equivoca en clientes distintos (tienen distinto `bynode` y distintos hiperparámetros). Al promediar, los errores que comete uno solo pierden peso.
 - Para el private (el 70% restante) es la opción con menos riesgo: no depende de haber acertado cuál de los dos modelos es mejor.
 
 ### 6.3 Elección del corte: 12.000
 
 - En el public, el blend rinde mejor entre 11.000 y 12.000 envíos y baja de forma sostenida a partir de 12.500.
+- Con 12.000 envíos, el blend es la mejor de las tres opciones en el public: blend 107,77, j4955 106,70 y j4957 104,20.
 - El backtest de 202106 ubicaba el óptimo más arriba (12.200–14.200).
 - 12.000 queda en el borde alto de la zona buena del public y más cerca del óptimo del backtest. No se eligió el máximo exacto del public (11.500), porque entre cortes vecinos la diferencia es de 1–2 `BAJA+2`, es decir, ruido.
 
@@ -160,4 +161,3 @@ Se promedian **puestos y no probabilidades** para que los dos modelos pesen exac
 3. Correr `notebooks/blend_j4955_j4957.ipynb`. Solo lee esos dos archivos y escribe los CSV de envío en `~/buckets/b1/exp/BLEND-4955-4957/`.
 
 Semilla primigenia: 600013.
-
